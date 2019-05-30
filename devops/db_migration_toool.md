@@ -100,8 +100,9 @@ GLOBAL OPTIONS:
    6. 如果执行失败先dbmate -s db/schema-$ENV.sql rollback,然后手动清除，直至所有脚本都执行成功  
    
 ### dbmate测试|生产环境迁移
-   1. 备份数据库;
+   1. 执行迁移命令前需要备份数据库;
    2. 安装dbmate，如上描述;
-   3. dbmate -s db/schema-$ENV.sql migrate;
-   4. 提交schema-$ENV.sql(记录迁移历史记录)到gitlab服务器上;
-   5. 如何执行错误，需要手动处理;
+   3. 修改upstream/bees360web/backend/bees360-mapper/src/main/resources/.env文件，配置DATABASE_URL;
+   4. dbmate -s db/schema-$ENV.sql migrate;
+   5. 提交schema-$ENV.sql(记录迁移历史记录)到gitlab服务器上;
+   6. 如果执行失败，需要手动处理;
